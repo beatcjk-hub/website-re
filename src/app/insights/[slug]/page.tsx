@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import Container from "@/components/layout/Container";
 import CtaBand from "@/components/ui/CtaBand";
 import { INSIGHTS, getInsight } from "@/data/insights";
-import { getProject } from "@/data/projects";
+import { getProjects } from "@/lib/projects";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -23,7 +23,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function InsightPage({ params }: Props) {
   const insight = getInsight((await params).slug);
   if (!insight) notFound();
-  const related = insight.relatedProjects.flatMap((slug) => getProject(slug) ?? []);
+  const projects = await getProjects();
+  const related = insight.relatedProjects.flatMap((slug) => projects.find((p) => p.slug === slug) ?? []);
 
   return (
     <>

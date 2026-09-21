@@ -6,15 +6,21 @@ import Photo from "@/components/ui/Photo";
 import CompareSlider from "@/components/ui/CompareSlider";
 import CaseStudySection from "@/components/projects/CaseStudySection";
 import ProjectGallery from "@/components/projects/ProjectGallery";
-import { PROJECTS, getProject, projectMeta } from "@/data/projects";
+import { projectMeta } from "@/data/projects";
+import { getProject, getProjects } from "@/lib/projects";
 import { INDUSTRY_LABELS } from "@/types/project";
 
 type Props = { params: Promise<{ slug: string }> };
 
-export const generateStaticParams = () => PROJECTS.map((p) => ({ slug: p.slug }));
+// 목록에 없는 새 slug도 처음 접속 시 생성되도록 dynamicParams(기본값 true)를 유지한다.
+export const revalidate = 300;
+
+export async function generateStaticParams() {
+  return (await getProjects()).map((p) => ({ slug: p.slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const project = getProject((await params).slug);
+  const project = await getProject((await params).slug);
   if (!project) return {};
   const title = project.seoTitle ?? project.titleEn;
   const description = project.seoDescription ?? project.summary ?? `${project.title} — ${projectMeta(project)}`;
@@ -28,10 +34,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const project = getProject((await params).slug);
+  const { slug } = await params;
+  const projects = await getProjects();
+  const project = projects.find((p) => p.slug === slug);
   if (!project) notFound();
 
-  const next = PROJECTS[(PROJECTS.indexOf(project) + 1) % PROJECTS.length];
+  const next = projects[(projects.indexOf(project) + 1) % projects.length];
   const info: [string, string | undefined][] = [
     ["CLIENT", project.client],
     ["LOCATION", project.location],

@@ -3,7 +3,7 @@ import Container from "@/components/layout/Container";
 import PageIntro from "@/components/ui/PageIntro";
 import ContactForm from "@/components/forms/ContactForm";
 import { CONTACT } from "@/data/site";
-import { getProject } from "@/data/projects";
+import { getProject } from "@/lib/projects";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -16,7 +16,7 @@ type Props = { searchParams: Promise<{ from?: string }> };
 export default async function ContactPage({ searchParams }: Props) {
   const { from } = await searchParams;
   // 존재하는 프로젝트 slug만 받아 임의 문자열이 폼에 들어가지 않게 한다.
-  const fromProject = from && getProject(from) ? from : "";
+  const fromProject = from && (await getProject(from)) ? from : "";
 
   return (
     <>

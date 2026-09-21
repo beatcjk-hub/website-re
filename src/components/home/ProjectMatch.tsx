@@ -3,10 +3,9 @@
 import Link from "next/link";
 import { useState } from "react";
 import Container from "@/components/layout/Container";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import Photo from "@/components/ui/Photo";
 import Reveal from "./Reveal";
-import { PROJECTS } from "@/data/projects";
-import { INDUSTRY_LABELS, type Industry } from "@/types/project";
+import { INDUSTRY_LABELS, type Industry, type Project } from "@/types/project";
 
 const FILTERS: { label: string; value: Industry | "all" }[] = [
   { label: "ALL", value: "all" },
@@ -18,19 +17,19 @@ const FILTERS: { label: string; value: Industry | "all" }[] = [
 ];
 
 /**
- * Phase 2에서는 위 PROJECTS 배열을 클라이언트에서 필터링합니다.
+ * Phase 2에서는 전달받은 projects 배열을 클라이언트에서 필터링합니다.
  * Phase 3에서 실제 프로젝트 데이터가 API/CMS로 연결되면, 이 필터 상태를
  * 그대로 두고 데이터 소스만 서버에서 가져오는 방식으로 바꾸면 됩니다.
  */
-export default function ProjectMatch() {
+export default function ProjectMatch({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<Industry | "all">(
     "all"
   );
 
   const filtered =
     active === "all"
-      ? PROJECTS
-      : PROJECTS.filter((p) => p.industry === active);
+      ? projects
+      : projects.filter((p) => p.industry === active);
 
   return (
     <section className="border-t border-line py-24 sm:py-32">
@@ -68,9 +67,11 @@ export default function ProjectMatch() {
               href={`/projects/${project.slug}`}
               className="group"
             >
-              <PlaceholderImage
-                label={project.titleEn}
+              <Photo
+                src={project.thumbnail ?? project.heroImage}
+                alt={project.titleEn}
                 aspect="4/5"
+                sizes="(min-width: 640px) 33vw, 100vw"
                 className="transition-transform duration-500 ease-eb group-hover:scale-[1.03]"
               />
               <p className="mt-3 text-small text-stone-600">

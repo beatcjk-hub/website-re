@@ -1,8 +1,8 @@
 import { INDUSTRY_LABELS, type Project } from "@/types/project";
 
 /**
- * 프로젝트 데이터 (단일 출처). 홈, /projects, /projects/[slug]가 모두 여기서 읽는다.
- * 프로젝트 추가 = 배열에 객체 하나 추가. 필드 설명은 src/types/project.ts 참고.
+ * 프로젝트 초기 데이터 (Supabase 미연결/비어 있을 때의 대체 데이터이자 최초 시드 원본).
+ * 화면은 이 파일을 직접 읽지 않고 src/lib/projects.ts를 통해 가져온다. 필드 설명은 src/types/project.ts 참고.
  * 출처: www.eb-ds.com(기존 워드프레스)의 실제 프로젝트명/업종/지역. 연도·면적 등은 확인 후 채운다.
  */
 export const PROJECTS: Project[] = [
@@ -124,10 +124,6 @@ export const PROJECTS: Project[] = [
     size: "md",
   },
 ];
-
-export const FEATURED_PROJECTS = PROJECTS.filter((p) => p.featured);
-
-export const getProject = (slug: string) => PROJECTS.find((p) => p.slug === slug);
 
 /** "Gwangju · Restaurant · Interior Design" — 비어 있는 값은 건너뛴다 */
 export const projectMeta = (p: Project) =>

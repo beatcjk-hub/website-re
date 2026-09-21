@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Container from "@/components/layout/Container";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
+import Photo from "@/components/ui/Photo";
 import Reveal from "./Reveal";
-import { FEATURED_PROJECTS, projectMeta } from "@/data/projects";
+import { projectMeta } from "@/data/projects";
+import type { Project } from "@/types/project";
 
 const SIZE_CLASSES: Record<string, { col: string; aspect: string }> = {
   lg: { col: "sm:col-span-7", aspect: "3/2" },
@@ -15,7 +16,7 @@ const SIZE_CLASSES: Record<string, { col: string; aspect: string }> = {
  * 프로젝트별 size 값(lg/md/full)에 따라 폭과 비율이 다른
  * 에디토리얼 레이아웃을 사용합니다.
  */
-export default function SelectedProjects() {
+export default function SelectedProjects({ projects }: { projects: Project[] }) {
   return (
     <section className="border-t border-line py-24 sm:py-32">
       <Container>
@@ -28,7 +29,7 @@ export default function SelectedProjects() {
         </Reveal>
 
         <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-12">
-          {FEATURED_PROJECTS.map((project, i) => {
+          {projects.map((project, i) => {
             const { col, aspect } = SIZE_CLASSES[project.size];
             return (
               <Link
@@ -36,8 +37,9 @@ export default function SelectedProjects() {
                 href={`/projects/${project.slug}`}
                 className={`group relative block ${col}`}
               >
-                <PlaceholderImage
-                  label={`PROJECT PHOTO — ${project.titleEn}`}
+                <Photo
+                  src={project.thumbnail ?? project.heroImage}
+                  alt={`PROJECT PHOTO — ${project.titleEn}`}
                   aspect={aspect}
                   className="transition-transform duration-500 ease-eb group-hover:scale-[1.03]"
                 />
