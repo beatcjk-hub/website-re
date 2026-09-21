@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  디자인 토큰을 CSS 변수로도 노출합니다.
+  Tailwind 클래스가 닿지 않는 곳(예: 커스텀 커서, 서드파티 라이브러리)에서
+  색상이 필요하면 tailwind.config.ts를 직접 고치는 대신 이 값을 참조하세요.
+  단, 색상의 "정답"은 항상 tailwind.config.ts 입니다 — 두 곳이 어긋나지 않도록 유지합니다.
+*/
+:root {
+  --color-ink: #111111;
+  --color-paper: #ffffff;
+  --color-stone: #8c8577;
+  --color-stone-50: #f5f3ef;
+  --color-banana: #f4ff52;
+  --color-line: rgba(17, 17, 17, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--color-ink);
+  background-color: var(--color-paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* 키보드 포커스 표시 — 접근성 필수 요소이므로 절대 제거하지 않습니다 */
+:focus-visible {
+  outline: 2px solid var(--color-ink);
+  outline-offset: 3px;
+}
+
+::selection {
+  background-color: var(--color-banana);
+  color: var(--color-ink);
+}
+
+/* 모션 최소화 설정을 존중합니다 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
