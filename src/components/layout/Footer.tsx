@@ -10,7 +10,7 @@ import { CONTACT } from "@/data/site";
 
 const SOCIALS = [
   { label: "Instagram", href: "#" },
-  { label: "YouTube", href: "#" },
+  { label: "YouTube", href: "https://www.youtube.com/@%EC%93%B8%EB%AA%A8%EC%9E%88%EB%8A%94%EB%94%94%EC%9E%90%EC%9D%B8" },
   { label: "Facebook", href: "#" },
   // Naver Blog는 스펙 문서의 콘텐츠 마케팅 목표(19항)에 따라 추가 예정
   { label: "Naver Blog", href: "#" },
@@ -58,7 +58,12 @@ export default function Footer() {
           <div className="flex gap-6">
             {/* TODO: 실제 SNS 프로필 URL로 교체 */}
             {SOCIALS.map((social) => (
-              <a key={social.label} href={social.href} className="hover:text-paper">
+              <a
+                key={social.label}
+                href={social.href}
+                className="hover:text-paper"
+                {...(social.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+              >
                 {social.label}
               </a>
             ))}
