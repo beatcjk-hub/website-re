@@ -1,11 +1,12 @@
 import { NextResponse } from "next/server";
 import { parseInquiry, validateInquiry } from "@/lib/inquiry";
+import { sendInquiryEmail } from "@/lib/inquiry-email";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 
 /**
  * 상담 문의 접수 API.
- * 흐름: 검증 → Supabase 저장(원본 보관) → 웹훅 알림(INQUIRY_WEBHOOK_URL, 향후 n8n).
- * 저장 수단이 하나도 없으면 문의가 유실되므로 운영 환경에서는 성공 대신 503을 돌려준다.
+ * 흐름: 검증 → Supabase 저장(원본 보관) → 이메일 알림 + 웹훅 알림(향후 n8n).
+ * 저장과 알림이 모두 실패하거나 하나도 설정되지 않으면 문의가 유실되므로 성공으로 응답하지 않는다.
  */
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
@@ -22,16 +23,18 @@ export async function POST(request: Request) {
 
   const supabase = getSupabaseAdmin();
   const webhookUrl = process.env.INQUIRY_WEBHOOK_URL;
+  const emailConfigured = Boolean(process.env.RESEND_API_KEY && process.env.INQUIRY_NOTIFY_EMAIL);
 
-  if (!supabase && !webhookUrl) {
+  if (!supabase && !webhookUrl && !emailConfigured) {
     if (process.env.NODE_ENV === "production") {
-      console.error("Neither Supabase nor INQUIRY_WEBHOOK_URL is configured; inquiry could not be stored");
+      console.error("No inquiry destination configured (Supabase, email, or webhook)");
       return NextResponse.json({ ok: false }, { status: 503 });
     }
     console.log("[inquiry:dev]", inquiry);
     return NextResponse.json({ ok: true });
   }
 
+  let stored = false;
   if (supabase) {
     const { error } = await supabase.from("inquiries").insert({
       project_type: inquiry.projectType,
@@ -48,26 +51,33 @@ export async function POST(request: Request) {
       message: inquiry.message || null,
       from_project: inquiry.fromProject || null,
     });
-    if (error) {
-      console.error("inquiry insert failed", error.message);
-      return NextResponse.json({ ok: false }, { status: 502 });
-    }
+    if (error) console.error("inquiry insert failed", error.message);
+    else stored = true;
   }
 
-  // 알림은 부가 기능: DB에 이미 저장됐다면 웹훅 실패로 사용자에게 실패를 보여주지 않는다.
-  if (webhookUrl) {
-    try {
-      const res = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...inquiry, receivedAt: new Date().toISOString() }),
-      });
-      if (!res.ok) throw new Error(`webhook responded ${res.status}`);
-    } catch (error) {
-      console.error("inquiry webhook failed", error);
-      if (!supabase) return NextResponse.json({ ok: false }, { status: 502 });
-    }
-  }
+  // 이메일과 웹훅은 서로 독립적이므로 동시에 보낸다.
+  const [emailResult, webhookResult] = await Promise.all([
+    sendInquiryEmail(inquiry),
+    webhookUrl ? postWebhook(webhookUrl, inquiry) : Promise.resolve(null),
+  ]);
+  const notified = emailResult === true || webhookResult === true;
 
+  // 저장 또는 알림 중 하나라도 성공했으면 문의는 전달된 것이다.
+  if (!stored && !notified) return NextResponse.json({ ok: false }, { status: 502 });
   return NextResponse.json({ ok: true });
+}
+
+async function postWebhook(url: string, inquiry: unknown): Promise<boolean> {
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...(inquiry as object), receivedAt: new Date().toISOString() }),
+    });
+    if (!res.ok) throw new Error(`webhook responded ${res.status}`);
+    return true;
+  } catch (error) {
+    console.error("inquiry webhook failed", error);
+    return false;
+  }
 }
