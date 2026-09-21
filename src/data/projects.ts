@@ -13,10 +13,19 @@ export const PROJECTS: Project[] = [
     titleEn: "APOO",
     location: "Gwangju",
     industry: "restaurant",
-    year: "",
+    year: "2023", // 로고 "SINCE 2023" 및 시안 파일 날짜(2023-09) 기준. 실제 오픈 연도 확인 필요
     services: ["Interior", "Branding"],
     size: "full",
     featured: true,
+    summary: "아시안 푸드 펍 & 레스토랑 APOO의 브랜드 아이덴티티, 간판, 홀·주방 인테리어를 함께 설계했습니다.",
+    heroImage: "/projects/apoo/hero.jpg",
+    thumbnail: "/projects/apoo/hero.jpg",
+    gallery: [
+      "/projects/apoo/brand-card.jpg",
+      "/projects/apoo/signage-plan.jpg",
+      "/projects/apoo/3d-hall-01.jpg",
+      "/projects/apoo/3d-hall-02.jpg",
+    ],
   },
   {
     id: "suje-cheongnyeon",
