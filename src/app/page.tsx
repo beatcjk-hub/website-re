@@ -20,6 +20,8 @@ export const revalidate = 300;
 
 export default async function HomePage() {
   const [featured, projects] = await Promise.all([getFeaturedProjects(), getProjects()]);
+  // 3D 렌더와 시공 사진이 모두 있는 첫 프로젝트를 대표 케이스 스터디로 쓴다.
+  const caseStudy = projects.find((p) => p.renderImages?.length && p.constructionImages?.length);
 
   return (
     <>
@@ -27,7 +29,7 @@ export default async function HomePage() {
       <BrandPhilosophy />
       <SelectedProjects projects={featured} />
       <WhatWeDo />
-      <FeaturedCaseStudy />
+      <FeaturedCaseStudy project={caseStudy} />
       <BeforeAfterSlider />
       <ProcessTimeline />
       <ProjectMatch projects={projects} />
