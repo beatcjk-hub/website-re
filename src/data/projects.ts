@@ -7,6 +7,31 @@ import { INDUSTRY_LABELS, type Project } from "@/types/project";
  */
 export const PROJECTS: Project[] = [
   {
+    id: "honten",
+    slug: "honten",
+    title: "혼텐 이자카야 첨단점",
+    titleEn: "HONTEN",
+    location: "Gwangju",
+    industry: "restaurant",
+    year: "",
+    services: ["Interior", "Branding", "Graphic"],
+    size: "full",
+    featured: true,
+    heroImage: "/projects/honten/hero.jpg",
+    thumbnail: "/projects/honten/hero.jpg",
+    gallery: [
+      "/projects/honten/gallery-1.jpg",
+      "/projects/honten/gallery-2.jpg",
+      "/projects/honten/gallery-3.jpg",
+      "/projects/honten/gallery-4.jpg",
+      "/projects/honten/gallery-5.jpg",
+      "/projects/honten/gallery-6.jpg",
+    ],
+    // 3D와 시공 사진은 같은 순서끼리 짝을 이룬다 (3D vs BUILT 슬라이더)
+    renderImages: ["/projects/honten/render-1.jpg", "/projects/honten/render-2.jpg", "/projects/honten/render-3.jpg"],
+    constructionImages: ["/projects/honten/built-1.jpg", "/projects/honten/hero.jpg", "/projects/honten/built-3.jpg"],
+  },
+  {
     id: "apoo",
     slug: "apoo",
     title: "아푸 APOO 아시안푸드 조대본점",
@@ -15,7 +40,7 @@ export const PROJECTS: Project[] = [
     industry: "restaurant",
     year: "2023", // 로고 "SINCE 2023" 및 시안 파일 날짜(2023-09) 기준. 실제 오픈 연도 확인 필요
     services: ["Interior", "Branding"],
-    size: "full",
+    size: "lg",
     featured: true,
     summary: "아시안 푸드 펍 & 레스토랑 APOO의 브랜드 아이덴티티, 간판, 홀·주방 인테리어를 함께 설계했습니다.",
     heroImage: "/projects/apoo/hero.jpg",
@@ -81,7 +106,7 @@ export const PROJECTS: Project[] = [
     industry: "restaurant",
     year: "2023", // 도면·현장사진 파일 날짜(2023-04) 기준. 실제 오픈 연도 확인 필요
     services: ["Interior Design"],
-    size: "lg",
+    size: "full",
     featured: true,
     heroImage: "/projects/gochang-myeonok/hero.jpg",
     thumbnail: "/projects/gochang-myeonok/hero.jpg",
@@ -133,7 +158,7 @@ export const PROJECTS: Project[] = [
     titleEn: "OVEN DAY",
     location: "",
     industry: "restaurant",
-    year: "",
+    year: "2023", // 시공 사진 촬영일(2023-12) 기준,
     services: ["Interior", "Branding"],
     size: "md",
     heroImage: "/projects/oven-day/hero.jpg",
@@ -144,6 +169,26 @@ export const PROJECTS: Project[] = [
       "/projects/oven-day/gallery-3.jpg",
       "/projects/oven-day/gallery-4.jpg",
     ],
+  },
+  {
+    id: "bukchon-sundubu",
+    slug: "bukchon-sundubu",
+    title: "북촌순두부 효천점",
+    titleEn: "BUKCHON SUNDUBU",
+    location: "Gwangju",
+    industry: "restaurant",
+    year: "2024", // 현장 사진 촬영일(2024-08) 기준
+    services: ["Interior", "Signage"],
+    size: "md",
+    heroImage: "/projects/bukchon-sundubu/hero.jpg",
+    thumbnail: "/projects/bukchon-sundubu/hero.jpg",
+    gallery: [
+      "/projects/bukchon-sundubu/gallery-1.jpg",
+      "/projects/bukchon-sundubu/gallery-2.jpg",
+      "/projects/bukchon-sundubu/gallery-3.jpg",
+    ],
+    // 시공 전 현장 사진. 시공 후 사진(afterImages)을 넣으면 BEFORE / AFTER 슬라이더가 나타난다.
+    beforeImages: ["/projects/bukchon-sundubu/before-1.jpg", "/projects/bukchon-sundubu/before-2.jpg"],
   },
   {
     id: "eojuk",

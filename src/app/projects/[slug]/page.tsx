@@ -54,9 +54,11 @@ export default async function ProjectPage({ params }: Props) {
   const renders = project.renderImages ?? [];
   const builds = project.constructionImages ?? [];
   const renderPairs = renders.slice(0, builds.length).map((render, i) => [render, builds[i]] as const);
-  const beforeAfterPairs = (project.beforeImages ?? []).map(
-    (before, i) => [before, project.afterImages?.[i]] as const,
-  );
+  // 시공 후 사진이 아직 없는 Before는 숨긴다.
+  const beforeAfterPairs = (project.beforeImages ?? []).flatMap((before, i) => {
+    const after = project.afterImages?.[i];
+    return after ? [[before, after] as const] : [];
+  });
 
   const jsonLd = {
     "@context": "https://schema.org",
