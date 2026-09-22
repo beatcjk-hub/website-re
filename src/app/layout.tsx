@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layout/Header";
-import Footer from "@/components/layout/Footer";
+import SiteChrome from "@/components/layout/SiteChrome";
 
 /**
  * 영문 대형 헤드라인용 폰트 (아키텍처적, 지오메트릭 산세리프).
@@ -56,9 +55,7 @@ export default function RootLayout({
         className="font-sans"
         style={{ ["--font-pretendard" as string]: "'PretendardVariable'" }}
       >
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <SiteChrome>{children}</SiteChrome>
       </body>
     </html>
   );

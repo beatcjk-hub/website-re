@@ -12,7 +12,7 @@ type ProjectRow = Record<string, unknown>;
 
 const opt = <T,>(value: T | null | undefined): T | undefined => value ?? undefined;
 
-function fromRow(row: ProjectRow): Project {
+export function fromRow(row: ProjectRow): Project {
   const r = row as Record<string, never>;
   return {
     id: r.id,
