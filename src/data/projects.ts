@@ -469,6 +469,48 @@ export const PROJECTS: Project[] = [
       "/projects/gongsajung-pocha-mokpo/before-2.jpg",
     ],
   },
+  {
+    id: "songjeong-geumho",
+    slug: "songjeong-geumho",
+    title: "송정금호축산",
+    titleEn: "SONGJEONG GEUMHO",
+    location: "Gwangju",
+    industry: "restaurant",
+    year: "2024",
+    services: ["Interior Design"],
+    size: "lg",
+    featured: true,
+    summary: "원목 루버 천장과 황동 후드, 대나무 생화벽으로 완성한 정육식당 송정금호축산의 홀입니다.",
+    heroImage: "/projects/songjeong-geumho/hero.jpg",
+    thumbnail: "/projects/songjeong-geumho/hero.jpg",
+    gallery: [
+      "/projects/songjeong-geumho/gallery-1.jpg",
+      "/projects/songjeong-geumho/gallery-2.jpg",
+      "/projects/songjeong-geumho/gallery-3.jpg",
+      "/projects/songjeong-geumho/gallery-4.jpg",
+    ],
+  },
+  {
+    id: "icu-cafe",
+    slug: "icu-cafe",
+    title: "아이씨유24 무인카페",
+    titleEn: "I.C.U 24",
+    location: "Gwangju",
+    industry: "cafe",
+    year: "",
+    services: ["Interior", "Branding"],
+    size: "md",
+    summary: "'I SEE YOU' 슬로건의 무인카페 브랜드 아이씨유24의 로고·명함 등 브랜딩과 매장 공간을 함께 설계했습니다.",
+    // 현장 촬영 사진이 아직 없어 3D 디자인 렌더와 브랜딩 목업으로 hero/gallery를 구성했다. 실사진 확보되면 교체.
+    heroImage: "/projects/icu-cafe/hero.jpg",
+    thumbnail: "/projects/icu-cafe/hero.jpg",
+    gallery: [
+      "/projects/icu-cafe/gallery-1.jpg",
+      "/projects/icu-cafe/gallery-2.jpg",
+      "/projects/icu-cafe/gallery-3.jpg",
+      "/projects/icu-cafe/gallery-4.jpg",
+    ],
+  },
 ];
 
 /** "Gwangju · Restaurant · Interior Design" — 비어 있는 값은 건너뛴다 */
