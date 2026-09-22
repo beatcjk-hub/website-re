@@ -20,7 +20,7 @@ export default async function ContactPage({ searchParams }: Props) {
 
   return (
     <>
-      <PageIntro title="START A PROJECT" lead="세 단계로 간단히 알려주세요. 확인 후 연락드립니다." />
+      <PageIntro title="START A PROJECT" lead="간단히 알려주세요. 확인 후 빠르게 연락드립니다." />
       <Container className="grid gap-16 pb-32 lg:grid-cols-12">
         <div className="lg:col-span-7">
           <ContactForm fromProject={fromProject} />
