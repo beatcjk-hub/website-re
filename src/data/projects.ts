@@ -424,6 +424,30 @@ export const PROJECTS: Project[] = [
       "/projects/baebo-samchon/before-2.jpg",
     ],
   },
+  {
+    id: "gongsajung-pocha-mokpo",
+    slug: "gongsajung-pocha-mokpo",
+    title: "공사중 포차 목포점",
+    titleEn: "GONGSAJUNG POCHA — MOKPO",
+    location: "Mokpo",
+    industry: "restaurant",
+    year: "",
+    services: ["Interior", "Branding"],
+    size: "md",
+    summary: "'공사중'이라는 이름 그대로, 공사장 컨셉의 그래픽과 마감재로 완성한 포차 공사중 목포점입니다.",
+    heroImage: "/projects/gongsajung-pocha-mokpo/hero.jpg",
+    thumbnail: "/projects/gongsajung-pocha-mokpo/hero.jpg",
+    gallery: [
+      "/projects/gongsajung-pocha-mokpo/gallery-1.jpg",
+      "/projects/gongsajung-pocha-mokpo/gallery-2.jpg",
+      "/projects/gongsajung-pocha-mokpo/gallery-3.jpg",
+      "/projects/gongsajung-pocha-mokpo/gallery-4.jpg",
+    ],
+    beforeImages: [
+      "/projects/gongsajung-pocha-mokpo/before-1.jpg",
+      "/projects/gongsajung-pocha-mokpo/before-2.jpg",
+    ],
+  },
 ];
 
 /** "Gwangju · Restaurant · Interior Design" — 비어 있는 값은 건너뛴다 */
