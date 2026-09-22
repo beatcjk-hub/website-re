@@ -201,6 +201,47 @@ export const PROJECTS: Project[] = [
     services: ["Interior Design"],
     size: "md",
   },
+  {
+    id: "buan-solga",
+    slug: "buan-solga",
+    title: "부안 솔가",
+    titleEn: "BUAN SOLGA",
+    location: "Buan",
+    industry: "restaurant",
+    year: "2021", // 촬영일(2021-08~09) 기준
+    services: ["Interior Design"],
+    size: "lg",
+    heroImage: "/projects/buan-solga/hero.jpg",
+    thumbnail: "/projects/buan-solga/hero.jpg",
+    gallery: [
+      "/projects/buan-solga/gallery-1.jpg",
+      "/projects/buan-solga/gallery-2.jpg",
+      "/projects/buan-solga/gallery-3.jpg",
+      "/projects/buan-solga/gallery-4.jpg",
+      "/projects/buan-solga/gallery-5.jpg",
+    ],
+  },
+  {
+    id: "jeonju-irre",
+    slug: "jeonju-irre",
+    title: "전주 이르리 카페",
+    titleEn: "JEONJU IRRE",
+    location: "Jeonju",
+    industry: "cafe",
+    year: "2021", // 촬영일(2021-08) 기준
+    services: ["Interior Design"],
+    size: "full",
+    summary: "한옥 마을의 기존 건물을 살려 마당과 처마를 그대로 두고 카페로 재구성한 프로젝트입니다.",
+    heroImage: "/projects/jeonju-irre/hero.jpg",
+    thumbnail: "/projects/jeonju-irre/hero.jpg",
+    gallery: [
+      "/projects/jeonju-irre/gallery-1.jpg",
+      "/projects/jeonju-irre/gallery-2.jpg",
+      "/projects/jeonju-irre/gallery-3.jpg",
+      "/projects/jeonju-irre/gallery-4.jpg",
+      "/projects/jeonju-irre/gallery-5.jpg",
+    ],
+  },
 ];
 
 /** "Gwangju · Restaurant · Interior Design" — 비어 있는 값은 건너뛴다 */

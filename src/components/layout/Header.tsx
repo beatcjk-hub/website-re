@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -57,9 +58,18 @@ export default function Header() {
       >
         <Link
           href="/"
-          className="font-display text-lg font-bold tracking-tight"
+          className="flex items-center gap-2.5 font-display text-lg font-bold tracking-tight"
           onClick={() => setIsMenuOpen(false)}
         >
+          {/* 로고 아이콘은 검정 선화라서, 밝은(투명 배경) 헤더 상태에서는 흰색으로 반전한다 */}
+          <Image
+            src="/brand/icon.png"
+            alt=""
+            width={61}
+            height={75}
+            priority
+            className={`h-6 w-auto transition-[filter] duration-300 ${isDarkText ? "" : "invert"}`}
+          />
           {SITE.name}
         </Link>
 
