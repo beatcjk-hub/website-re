@@ -155,14 +155,14 @@ export const PROJECTS: Project[] = [
   {
     id: "hic-suncheon",
     slug: "hic-suncheon",
-    title: "제스트도어",
-    titleEn: "ZEST DOOR",
+    title: "힉",
+    titleEn: "HIC",
     location: "Suncheon",
     industry: "restaurant",
     year: "",
     services: ["Interior Design"],
     size: "md",
-    summary: "'Restaurant, Lunch & Bistro'를 표방하는 제스트도어의 공간을 설계했습니다.",
+    summary: "'Restaurant, Lunch & Bistro'를 표방하는 힉의 공간을 설계했습니다.",
     heroImage: "/projects/hic-suncheon/hero.jpg",
     thumbnail: "/projects/hic-suncheon/hero.jpg",
     gallery: [
