@@ -29,7 +29,7 @@ export default async function InsightPage({ params }: Props) {
   return (
     <>
       <article>
-        <Container className="pt-40 sm:pt-48">
+        <Container className={`pt-40 sm:pt-48 ${related.length > 0 ? "" : "pb-24"}`}>
           <Link href="/insights" className="text-small text-stone-600 hover:text-ink">← INSIGHTS</Link>
           <p className="mt-6 text-small text-stone-600">{insight.category}</p>
           <h1 className="mt-2 max-w-3xl font-display text-display-2 font-bold">{insight.title}</h1>

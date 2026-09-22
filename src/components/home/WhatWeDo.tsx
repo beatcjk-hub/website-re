@@ -1,5 +1,5 @@
+import Image from "next/image";
 import Container from "@/components/layout/Container";
-import PlaceholderImage from "@/components/ui/PlaceholderImage";
 import Reveal from "./Reveal";
 
 const SERVICES = [
@@ -8,12 +8,15 @@ const SERVICES = [
     title: "BRANDING",
     items: ["Brand Strategy", "Naming", "Identity", "Graphic Design", "Signage"],
     highlight: false,
+    // APOO 브랜드 명함 목업 — 브랜딩 산출물을 보여주는 실사진
+    image: "/projects/apoo/brand-card.jpg",
   },
   {
     number: "02",
     title: "INTERIOR",
     items: ["Space Planning", "Interior Design", "3D Visualization", "Construction"],
     highlight: false,
+    image: "/projects/donkkanam-jinwol/built-1.jpg",
   },
   {
     number: "03",
@@ -27,6 +30,7 @@ const SERVICES = [
     ],
     // 가장 차별화된 서비스 — 유일하게 포인트 컬러를 사용
     highlight: true,
+    image: "/projects/oort-coffee/hero.jpg",
   },
 ];
 
@@ -74,11 +78,18 @@ export default function WhatWeDo() {
               </ul>
 
               <div className="sm:col-span-3">
-                <PlaceholderImage
-                  label={service.title}
-                  aspect="4/3"
-                  className="scale-95 opacity-70 transition-all duration-500 ease-eb group-hover:scale-100 group-hover:opacity-100"
-                />
+                <div
+                  className="relative overflow-hidden bg-stone-100 scale-95 opacity-70 transition-all duration-500 ease-eb group-hover:scale-100 group-hover:opacity-100"
+                  style={{ aspectRatio: "4/3" }}
+                >
+                  <Image
+                    src={service.image}
+                    alt={service.title}
+                    fill
+                    sizes="(min-width: 640px) 25vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </div>
           ))}
