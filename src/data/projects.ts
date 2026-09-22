@@ -65,7 +65,6 @@ export const PROJECTS: Project[] = [
     featured: true,
     summary:
       "건강하고 정직한 재료로 만든 수제청을 파는 카페, 수제청년의 공간입니다. '건강·정직·따뜻함'이라는 브랜드 키워드를 자연 소재와 밝은 톤의 마감재로 풀어냈습니다.",
-    // 현장 촬영 사진이 아직 없어 3D 디자인 렌더로 hero/gallery를 구성했다. 실사진 확보되면 교체.
     heroImage: "/projects/suje-cheongnyeon/hero.jpg",
     thumbnail: "/projects/suje-cheongnyeon/hero.jpg",
     gallery: [
@@ -117,7 +116,11 @@ export const PROJECTS: Project[] = [
       "/projects/iri-beer-iksan/gallery-1.jpg",
       "/projects/iri-beer-iksan/gallery-2.jpg",
       "/projects/iri-beer-iksan/gallery-3.jpg",
+      "/projects/iri-beer-iksan/gallery-4.jpg",
     ],
+    // 같은 구도의 3D 렌더와 실제 시공 사진 2세트를 짝지었다
+    renderImages: ["/projects/iri-beer-iksan/render-1.jpg", "/projects/iri-beer-iksan/render-2.jpg"],
+    constructionImages: ["/projects/iri-beer-iksan/built-1.jpg", "/projects/iri-beer-iksan/built-2.jpg"],
   },
   {
     id: "gochang-myeonok",
@@ -162,7 +165,16 @@ export const PROJECTS: Project[] = [
     summary: "'Restaurant, Lunch & Bistro'를 표방하는 제스트도어의 공간을 설계했습니다.",
     heroImage: "/projects/hic-suncheon/hero.jpg",
     thumbnail: "/projects/hic-suncheon/hero.jpg",
-    gallery: ["/projects/hic-suncheon/gallery-1.jpg"],
+    gallery: [
+      "/projects/hic-suncheon/gallery-1.jpg",
+      "/projects/hic-suncheon/gallery-2.jpg",
+      "/projects/hic-suncheon/gallery-3.jpg",
+      "/projects/hic-suncheon/gallery-4.jpg",
+    ],
+    beforeImages: [
+      "/projects/hic-suncheon/before-1.jpg",
+      "/projects/hic-suncheon/before-2.jpg",
+    ],
   },
   {
     id: "gongsajung-pocha-suwan",
@@ -176,6 +188,15 @@ export const PROJECTS: Project[] = [
     size: "md",
     heroImage: "/projects/gongsajung-pocha-suwan/hero.jpg",
     thumbnail: "/projects/gongsajung-pocha-suwan/hero.jpg",
+    gallery: [
+      "/projects/gongsajung-pocha-suwan/gallery-1.jpg",
+      "/projects/gongsajung-pocha-suwan/gallery-2.jpg",
+      "/projects/gongsajung-pocha-suwan/gallery-3.jpg",
+    ],
+    beforeImages: ["/projects/gongsajung-pocha-suwan/before-1.jpg"],
+    // 야간 외관 컷은 3D 렌더와 실제 시공 사진이 같은 구도라 3D vs BUILT로 짝지었다
+    renderImages: ["/projects/gongsajung-pocha-suwan/render-1.jpg"],
+    constructionImages: ["/projects/gongsajung-pocha-suwan/built-1.jpg"],
   },
   {
     id: "oven-day",
