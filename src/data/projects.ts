@@ -65,6 +65,19 @@ export const PROJECTS: Project[] = [
     featured: true,
     summary:
       "건강하고 정직한 재료로 만든 수제청을 파는 카페, 수제청년의 공간입니다. '건강·정직·따뜻함'이라는 브랜드 키워드를 자연 소재와 밝은 톤의 마감재로 풀어냈습니다.",
+    // 현장 촬영 사진이 아직 없어 3D 디자인 렌더로 hero/gallery를 구성했다. 실사진 확보되면 교체.
+    heroImage: "/projects/suje-cheongnyeon/hero.jpg",
+    thumbnail: "/projects/suje-cheongnyeon/hero.jpg",
+    gallery: [
+      "/projects/suje-cheongnyeon/gallery-1.jpg",
+      "/projects/suje-cheongnyeon/gallery-2.jpg",
+      "/projects/suje-cheongnyeon/gallery-3.jpg",
+      "/projects/suje-cheongnyeon/gallery-4.jpg",
+    ],
+    beforeImages: [
+      "/projects/suje-cheongnyeon/before-1.jpg",
+      "/projects/suje-cheongnyeon/before-2.jpg",
+    ],
   },
   {
     id: "pami-garden",
@@ -384,6 +397,31 @@ export const PROJECTS: Project[] = [
       "/projects/yeonggwang-buneung/gallery-1.jpg",
       "/projects/yeonggwang-buneung/gallery-2.jpg",
       "/projects/yeonggwang-buneung/gallery-3.jpg",
+    ],
+  },
+  {
+    id: "baebo-samchon",
+    slug: "baebo-samchon",
+    title: "배보삼춘 — 돼지숙수부위 구워주는 삼춘",
+    titleEn: "UNCLE BAEBO'S PORK HOUSE",
+    location: "Gwangju",
+    industry: "restaurant",
+    year: "",
+    services: ["Interior", "Branding"],
+    size: "md",
+    summary: "무진회관 기존 상가를 개조해 벽돌과 블랙 톤으로 완성한 돼지고기 전문점 배보삼춘의 브랜드와 공간입니다.",
+    // 현장 촬영 사진이 아직 없어 3D 디자인 렌더로 hero/gallery를 구성했다. 실사진 확보되면 교체.
+    heroImage: "/projects/baebo-samchon/hero.jpg",
+    thumbnail: "/projects/baebo-samchon/hero.jpg",
+    gallery: [
+      "/projects/baebo-samchon/gallery-1.jpg",
+      "/projects/baebo-samchon/gallery-2.jpg",
+      "/projects/baebo-samchon/gallery-3.jpg",
+      "/projects/baebo-samchon/gallery-4.jpg",
+    ],
+    beforeImages: [
+      "/projects/baebo-samchon/before-1.jpg",
+      "/projects/baebo-samchon/before-2.jpg",
     ],
   },
 ];
