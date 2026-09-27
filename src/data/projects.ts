@@ -77,6 +77,10 @@ export const PROJECTS: Project[] = [
       "/projects/suje-cheongnyeon/before-1.jpg",
       "/projects/suje-cheongnyeon/before-2.jpg",
     ],
+    afterImages: [
+      "/projects/suje-cheongnyeon/hero.jpg",
+      "/projects/suje-cheongnyeon/gallery-1.jpg",
+    ],
   },
   {
     id: "pami-garden",
@@ -175,6 +179,10 @@ export const PROJECTS: Project[] = [
       "/projects/hic-suncheon/before-1.jpg",
       "/projects/hic-suncheon/before-2.jpg",
     ],
+    afterImages: [
+      "/projects/hic-suncheon/gallery-3.jpg",
+      "/projects/hic-suncheon/gallery-4.jpg",
+    ],
   },
   {
     id: "gongsajung-pocha-suwan",
@@ -194,6 +202,7 @@ export const PROJECTS: Project[] = [
       "/projects/gongsajung-pocha-suwan/gallery-3.jpg",
     ],
     beforeImages: ["/projects/gongsajung-pocha-suwan/before-1.jpg"],
+    afterImages: ["/projects/gongsajung-pocha-suwan/built-1.jpg"],
     // 야간 외관 컷은 3D 렌더와 실제 시공 사진이 같은 구도라 3D vs BUILT로 짝지었다
     renderImages: ["/projects/gongsajung-pocha-suwan/render-1.jpg"],
     constructionImages: ["/projects/gongsajung-pocha-suwan/built-1.jpg"],
@@ -468,6 +477,10 @@ export const PROJECTS: Project[] = [
       "/projects/gongsajung-pocha-mokpo/before-1.jpg",
       "/projects/gongsajung-pocha-mokpo/before-2.jpg",
     ],
+    afterImages: [
+      "/projects/gongsajung-pocha-mokpo/gallery-1.jpg",
+      "/projects/gongsajung-pocha-mokpo/gallery-2.jpg",
+    ],
   },
   {
     id: "songjeong-geumho",
@@ -535,6 +548,10 @@ export const PROJECTS: Project[] = [
       "/projects/okdang-jeongsik/before-1.jpg",
       "/projects/okdang-jeongsik/before-2.jpg",
     ],
+    afterImages: [
+      "/projects/okdang-jeongsik/gallery-1.jpg",
+      "/projects/okdang-jeongsik/gallery-2.jpg",
+    ],
   },
   {
     id: "fruchte-bongseon",
@@ -560,6 +577,10 @@ export const PROJECTS: Project[] = [
       "/projects/fruchte-bongseon/before-1.jpg",
       "/projects/fruchte-bongseon/before-2.jpg",
     ],
+    afterImages: [
+      "/projects/fruchte-bongseon/hero.jpg",
+      "/projects/fruchte-bongseon/gallery-1.jpg",
+    ],
   },
   {
     id: "cheongju-izakaya",
@@ -583,6 +604,7 @@ export const PROJECTS: Project[] = [
       "/projects/cheongju-izakaya/before-1.jpg",
       "/projects/cheongju-izakaya/before-2.jpg",
     ],
+    afterImages: ["/projects/cheongju-izakaya/hero.jpg"],
   },
 ];
 
