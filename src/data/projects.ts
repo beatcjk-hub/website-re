@@ -536,6 +536,31 @@ export const PROJECTS: Project[] = [
       "/projects/okdang-jeongsik/before-2.jpg",
     ],
   },
+  {
+    id: "fruchte-bongseon",
+    slug: "fruchte-bongseon",
+    title: "프루체 봉선점",
+    titleEn: "FRUCHTE CAFE",
+    location: "Gwangju",
+    industry: "cafe",
+    year: "2020",
+    services: ["Interior", "Branding"],
+    size: "lg",
+    featured: true,
+    summary: "그린 톤 아치와 열대 잎 그래픽 월아트로 완성한 카페 프루체 봉선점의 공간입니다.",
+    heroImage: "/projects/fruchte-bongseon/hero.jpg",
+    thumbnail: "/projects/fruchte-bongseon/hero.jpg",
+    gallery: [
+      "/projects/fruchte-bongseon/gallery-1.jpg",
+      "/projects/fruchte-bongseon/gallery-2.jpg",
+      "/projects/fruchte-bongseon/gallery-3.jpg",
+      "/projects/fruchte-bongseon/gallery-4.jpg",
+    ],
+    beforeImages: [
+      "/projects/fruchte-bongseon/before-1.jpg",
+      "/projects/fruchte-bongseon/before-2.jpg",
+    ],
+  },
 ];
 
 /** "Gwangju · Restaurant · Interior Design" — 비어 있는 값은 건너뛴다 */
