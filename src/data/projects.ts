@@ -511,6 +511,31 @@ export const PROJECTS: Project[] = [
       "/projects/icu-cafe/gallery-4.jpg",
     ],
   },
+  {
+    id: "okdang-jeongsik",
+    slug: "okdang-jeongsik",
+    title: "옥당정식",
+    titleEn: "OKDANG JEONGSIK",
+    location: "",
+    industry: "restaurant",
+    year: "2020",
+    services: ["Interior", "Branding"],
+    size: "lg",
+    featured: true,
+    summary: "수비드 돈까스 정식을 파는 옥당정식의 로고·브랜딩부터 민트그린 톤의 홀 인테리어까지 함께 설계했습니다.",
+    heroImage: "/projects/okdang-jeongsik/hero.jpg",
+    thumbnail: "/projects/okdang-jeongsik/hero.jpg",
+    gallery: [
+      "/projects/okdang-jeongsik/gallery-1.jpg",
+      "/projects/okdang-jeongsik/gallery-2.jpg",
+      "/projects/okdang-jeongsik/gallery-3.jpg",
+      "/projects/okdang-jeongsik/gallery-4.jpg",
+    ],
+    beforeImages: [
+      "/projects/okdang-jeongsik/before-1.jpg",
+      "/projects/okdang-jeongsik/before-2.jpg",
+    ],
+  },
 ];
 
 /** "Gwangju · Restaurant · Interior Design" — 비어 있는 값은 건너뛴다 */
