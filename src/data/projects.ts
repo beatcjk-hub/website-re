@@ -561,6 +561,29 @@ export const PROJECTS: Project[] = [
       "/projects/fruchte-bongseon/before-2.jpg",
     ],
   },
+  {
+    id: "cheongju-izakaya",
+    slug: "cheongju-izakaya",
+    title: "길상암 청주점",
+    titleEn: "KISSHOAN",
+    location: "Cheongju",
+    industry: "restaurant",
+    year: "2021",
+    services: ["Interior Design"],
+    size: "md",
+    summary: "일본식 소바·우동 전문점 길상암의 목재 톤 파사드와 노렌, 홀 인테리어를 설계했습니다.",
+    heroImage: "/projects/cheongju-izakaya/hero.jpg",
+    thumbnail: "/projects/cheongju-izakaya/hero.jpg",
+    gallery: [
+      "/projects/cheongju-izakaya/gallery-1.jpg",
+      "/projects/cheongju-izakaya/gallery-2.jpg",
+      "/projects/cheongju-izakaya/gallery-3.jpg",
+    ],
+    beforeImages: [
+      "/projects/cheongju-izakaya/before-1.jpg",
+      "/projects/cheongju-izakaya/before-2.jpg",
+    ],
+  },
 ];
 
 /** "Gwangju · Restaurant · Interior Design" — 비어 있는 값은 건너뛴다 */
