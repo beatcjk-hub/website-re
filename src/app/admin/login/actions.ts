@@ -12,7 +12,7 @@ export async function sendMagicLink(_prev: SendLinkResult | null, formData: Form
   const supabase = await getAuthClient();
   if (!supabase) return { ok: false, message: "로그인 기능이 아직 설정되지 않았습니다." };
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3004";
+  const siteUrl = process.env.SITE_URL ?? "http://localhost:3004";
   await supabase.auth.signInWithOtp({
     email,
     options: { emailRedirectTo: `${siteUrl}/auth/callback` },
