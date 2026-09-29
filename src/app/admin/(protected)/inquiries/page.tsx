@@ -44,7 +44,7 @@ export default async function InquiriesPage() {
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <p className="text-small text-stone-600">
-                    {new Date(r.created_at).toLocaleString("ko-KR")} · {r.project_type}
+                    {new Date(r.created_at).toLocaleString("ko-KR", { timeZone: "Asia/Seoul" })} · {r.project_type}
                     {r.from_project && ` · ${r.from_project}`}
                   </p>
                   <p className="mt-1 font-display text-heading-2 font-bold">
