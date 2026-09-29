@@ -9,13 +9,21 @@ type Status = "editing" | "sending" | "success" | "failed";
 const inputClass = "mt-2 w-full border-b border-ink/30 bg-transparent py-3 text-body outline-none focus:border-ink";
 const labelClass = "block text-small text-stone-600";
 
+const EMAIL_DOMAINS = ["gmail.com", "naver.com", "daum.net", "hanmail.net", "nate.com"];
+const DIRECT_INPUT = "직접입력";
+
 /** 한 화면에서 바로 보내는 상담 폼. 꼭 필요한 항목만 남겼다 (스펙 §22: 부담을 느낄 만큼 많은 입력란을 두지 않는다). */
 export default function ContactForm({ fromProject = "" }: { fromProject?: string }) {
   const [data, setData] = useState<Inquiry>({ ...EMPTY_INQUIRY, fromProject });
   const [errors, setErrors] = useState<InquiryErrors>({});
   const [status, setStatus] = useState<Status>("editing");
+  const [emailLocal, setEmailLocal] = useState("");
+  const [emailDomain, setEmailDomain] = useState(EMAIL_DOMAINS[0]);
+  const [emailDirect, setEmailDirect] = useState(false);
 
   const set = <K extends keyof Inquiry>(key: K, value: Inquiry[K]) => setData((prev) => ({ ...prev, [key]: value }));
+
+  const setEmail = (local: string, domain: string) => set("email", local && domain ? `${local}@${domain}` : "");
 
   const submit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -94,7 +102,52 @@ export default function ContactForm({ fromProject = "" }: { fromProject?: string
           </div>
           <div>
             <label className={labelClass} htmlFor="email">이메일</label>
-            <input id="email" type="email" autoComplete="email" className={inputClass} value={data.email} onChange={(e) => set("email", e.target.value)} />
+            <div className="mt-2 flex items-end gap-2">
+              <input
+                id="email"
+                autoComplete="off"
+                placeholder="아이디"
+                className={`${inputClass} mt-0 min-w-0 flex-1`}
+                value={emailLocal}
+                onChange={(e) => {
+                  setEmailLocal(e.target.value);
+                  setEmail(e.target.value, emailDomain);
+                }}
+              />
+              <span className="pb-3 text-body text-stone-600">@</span>
+              {emailDirect ? (
+                <input
+                  autoComplete="off"
+                  placeholder="도메인 입력"
+                  className={`${inputClass} mt-0 min-w-0 flex-1`}
+                  value={emailDomain}
+                  onChange={(e) => {
+                    setEmailDomain(e.target.value);
+                    setEmail(emailLocal, e.target.value);
+                  }}
+                />
+              ) : (
+                <select
+                  className={`${inputClass} mt-0 min-w-0 flex-1`}
+                  value={emailDomain}
+                  onChange={(e) => {
+                    if (e.target.value === DIRECT_INPUT) {
+                      setEmailDirect(true);
+                      setEmailDomain("");
+                      setEmail(emailLocal, "");
+                      return;
+                    }
+                    setEmailDomain(e.target.value);
+                    setEmail(emailLocal, e.target.value);
+                  }}
+                >
+                  {EMAIL_DOMAINS.map((domain) => (
+                    <option key={domain} value={domain}>{domain}</option>
+                  ))}
+                  <option value={DIRECT_INPUT}>{DIRECT_INPUT}</option>
+                </select>
+              )}
+            </div>
             {error("email")}
           </div>
         </div>

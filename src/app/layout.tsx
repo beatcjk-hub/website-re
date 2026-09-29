@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Archivo } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import SiteChrome from "@/components/layout/SiteChrome";
 
@@ -56,6 +57,7 @@ export default function RootLayout({
         style={{ ["--font-pretendard" as string]: "'PretendardVariable'" }}
       >
         <SiteChrome>{children}</SiteChrome>
+        <Analytics />
       </body>
     </html>
   );
