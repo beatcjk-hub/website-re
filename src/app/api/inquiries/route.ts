@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { parseInquiry, validateInquiry } from "@/lib/inquiry";
-import { sendInquiryEmail } from "@/lib/inquiry-email";
+import { sendInquiryEmail, sendInquiryConfirmationEmail } from "@/lib/inquiry-email";
 import { getSupabaseAdmin } from "@/lib/supabase/server";
 
 /**
@@ -55,10 +55,11 @@ export async function POST(request: Request) {
     else stored = true;
   }
 
-  // 이메일과 웹훅은 서로 독립적이므로 동시에 보낸다.
+  // 알림들은 서로 독립적이므로 동시에 보낸다. 고객 접수 확인 메일은 실패해도 문의 자체는 이미 저장/알림된 것이므로 결과를 따로 취급하지 않는다.
   const [emailResult, webhookResult] = await Promise.all([
     sendInquiryEmail(inquiry),
     webhookUrl ? postWebhook(webhookUrl, inquiry) : Promise.resolve(null),
+    sendInquiryConfirmationEmail(inquiry),
   ]);
   const notified = emailResult === true || webhookResult === true;
 
