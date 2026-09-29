@@ -9,7 +9,11 @@ import type { Inquiry } from "@/lib/inquiry";
 export async function sendInquiryEmail(inquiry: Inquiry): Promise<boolean | null> {
   const apiKey = process.env.RESEND_API_KEY;
   const to = process.env.INQUIRY_NOTIFY_EMAIL;
-  if (!apiKey || !to) return null;
+  if (!apiKey || !to) {
+    // 원인 진단용: 실제로는 전송이 그냥 조용히 꺼지는 상태라 무엇이 비었는지 로그로 남긴다.
+    console.error("inquiry email skipped — missing env", { hasApiKey: Boolean(apiKey), hasTo: Boolean(to) });
+    return null;
+  }
 
   // 도메인 인증 전에는 Resend 기본 발신 주소만 쓸 수 있다.
   const from = process.env.INQUIRY_FROM_EMAIL ?? "EB-DS Website <onboarding@resend.dev>";
